@@ -10,22 +10,22 @@ SelectWidget::SelectWidget(QWidget *parent)
 	background->resize(850,600);
 
 	QPushButton *gamestart= new QPushButton(this);
-	gamestart->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/startbutton.jpg)} QPushButton:pressed { border-image: url(Resources/startbutton2.jpg)}");
+	gamestart->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/start1.jpg)} QPushButton:pressed { border-image: url(Resources/start2.jpg)}");
 	gamestart->setGeometry(QRect(475,125,150,80));
 	QObject::connect(gamestart, SIGNAL(clicked()), this, SLOT(goToGame()));
 
 	QPushButton *tutorial= new QPushButton(this);
-	tutorial->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/tutorialbutton.jpg)} QPushButton:pressed { border-image: url(Resources/tutorialbutton2.jpg)}");
+	tutorial->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/tutorialbutton1.jpg)} QPushButton:pressed { border-image: url(Resources/tutorialbutton2.jpg)}");
 	tutorial->setGeometry(QRect(475,425,150,80));
 	QObject::connect(tutorial, SIGNAL(clicked()), this, SLOT(goToTutorial()));	
 
 	QPushButton *shop= new QPushButton(this);
-	shop->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/shopbutton.jpg)} QPushButton:pressed { border-image: url(Resources/shopbutton2.jpg)}");
+	shop->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/shop1.jpg)} QPushButton:pressed { border-image: url(Resources/shop2.jpg)}");
 	shop->setGeometry(QRect(650,225,150,80));
 	QObject::connect(shop, SIGNAL(clicked()), this, SLOT(goToShop()));	
 
 	QPushButton *status= new QPushButton(this);
-	status->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/statusbutton.jpg)} QPushButton:pressed { border-image: url(Resources/statusbutton2.jpg)}");
+	status->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/status1.jpg)} QPushButton:pressed { border-image: url(Resources/status2.jpg)}");
 	status->setGeometry(QRect(650,325,150,80));
 	QObject::connect(status, SIGNAL(clicked()), this, SLOT(goToStatus()));	
 

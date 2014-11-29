@@ -1,7 +1,7 @@
 #include "loginwidget.h"
 #include "mainwindow.h"
 
-LoginWidget::LoginWidget(QWidget *parent) //혜진.login wiget 전반적인 사이즈와 위치를 고쳤습니다.
+LoginWidget::LoginWidget(QWidget *parent)
 	: QWidget(parent)
 {	
 	login=new Login;
@@ -22,32 +22,32 @@ LoginWidget::LoginWidget(QWidget *parent) //혜진.login wiget 전반적인 사이즈와 �
 	QObject::connect(exit, SIGNAL(clicked()), this, SLOT(quit()));	
 
 	AButton = new QPushButton(this);
-	AButton->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/loginA_5.jpg)} QPushButton:pressed { border-image: url(Resources/loginA_6.jpg)}");
-	AButton->setGeometry(QRect(150,400,150,100));
+	AButton->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/loginA1.jpg)} QPushButton:pressed { border-image: url(Resources/loginA2.jpg)}");
+	AButton->setGeometry(QRect(150,440,150,100));
 	QObject::connect(AButton, SIGNAL(clicked()), this, SLOT(enterA()));
 
 	BButton = new QPushButton(this); 
-	BButton->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/loginB_3.jpg)} QPushButton:pressed { border-image: url(Resources/loginB_4.jpg)}");
-	BButton->setGeometry(QRect(350,400,150,100));
+	BButton->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/loginB1.jpg)} QPushButton:pressed { border-image: url(Resources/loginB2.jpg)}");
+	BButton->setGeometry(QRect(350,440,150,100));
 	QObject::connect(BButton, SIGNAL(clicked()), this, SLOT(enterB()));
 
 	QPushButton *signup;
 	signup = new QPushButton(this);
-	signup->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/signup.jpg)} QPushButton:pressed { border-image: url(Resources/signup_2.jpg)}");
-	signup->setGeometry(QRect(550,400,150,100));
+	signup->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/signup1.jpg)} QPushButton:pressed { border-image: url(Resources/signup2.jpg)}");
+	signup->setGeometry(QRect(600,440,150,100));
 
 	QObject::connect(signup, SIGNAL(clicked()), this, SLOT(signUp()));
 
-	ALine = new QLineEdit("  Go To LoginA",this);
-	ALine->setGeometry(QRect(275,530,100,50));
-	ALine->setReadOnly(true);
-	ALine->setStyleSheet("color: white;" "background-color: black;" "selection-color: black;" "selection-background-color: black;");
+	//ALine = new QLineEdit("  Go To LoginA",this);
+	//ALine->setGeometry(QRect(275,530,100,50));
+	//ALine->setReadOnly(true);
+	//ALine->setStyleSheet("color: white;" "background-color: black;" "selection-color: black;" "selection-background-color: black;");
 	//ALine->setStyleSheet("QLineEdit { background-image: url(loginline.jpg)}");
 
-	BLine = new QLineEdit("  Go To LoginB",this);
-	BLine->setGeometry(QRect(475,530,100,50));
-	BLine->setReadOnly(true);
-	BLine->setStyleSheet("color: white;" "background-color: black;" "selection-color: black;" "selection-background-color: black;");
+	//BLine = new QLineEdit("  Go To LoginB",this);
+	//BLine->setGeometry(QRect(475,530,100,50));
+	//BLine->setReadOnly(true);
+	//BLine->setStyleSheet("color: white;" "background-color: black;" "selection-color: black;" "selection-background-color: black;");
 }
 
 LoginWidget::~LoginWidget(){
@@ -100,10 +100,10 @@ void LoginWidget::enterSuccess(TEAM _team){
 	int team=static_cast<int>(_team);
 	success[team]=true;
 
-	if(_team==ATEAM)
-		ALine->setText("LoginA success");
+	if(_team==ATEAM)	
+		AButton->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/logins.jpg)} QPushButton:pressed { border-image: url(Resources/logins.jpg)}");
 	else if(_team==BTEAM)	
-		BLine->setText("LoginB success");
+		BButton->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/logins.jpg)} QPushButton:pressed { border-image: url(Resources/logins.jpg)}");
 
 	if(success[0] & success[1]){
 		MessageDialog* message=new MessageDialog(this);
@@ -190,7 +190,7 @@ signupdialog::signupdialog(QWidget *parent) //
 	VBox->addLayout(buttonBox);
 
 	setLayout(VBox);
-	this->resize(300,200);
+	this->setFixedSize(300,200);
 }
 
 void signupdialog::okay(){
@@ -208,11 +208,18 @@ void signupdialog::okay(){
 	if(signup==EXISTING_ID){
 		MessageDialog* message=new MessageDialog(this);	
 		message->setText("existing_id");
+		message->setStyleSheet("QPushButton:!pressed {border-image: url(Resources/exit.jpg)} QPushButton:pressed { border-image: url(Resources/exit_2.jpg)}");
+		message->resize(100,50);
 		message->exec();			
 	}
 	else if(signup==NO_ID){
 		MessageDialog* message=new MessageDialog(this);
 		message->setText("please enter ID");
+		message->exec();
+	}
+	else if(signup==NO_PWD){
+		MessageDialog* message=new MessageDialog(this);
+		message->setText("please enter PWD");
 		message->exec();
 	}
 	else if(signup==DIFFERENT_REPWD){
@@ -268,7 +275,7 @@ enterdialog::enterdialog(TEAM _team, QWidget *parent)
 	VBox->addLayout(buttonBox);
 
 	setLayout(VBox);
-	this->resize(250,150);
+	this->setFixedSize(250,150);
 
 }
 void enterdialog::okay(){

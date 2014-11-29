@@ -3,23 +3,20 @@
 MessageDialog::MessageDialog(QWidget* parent)
 	:QDialog(parent)
 {	
-	this->setWindowFlags(Qt::Window | Qt::CustomizeWindowHint);
+	this->setWindowFlags(Qt::Window | Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
 	messageButton= new QPushButton(this);
 	messageButton->resize(300,50);	//default size
 	connect(messageButton, SIGNAL(clicked()), this, SLOT(close()));
 }
-//MessageDialog::MessageDialog(const QString& str, QWidget* parent)
-//{	
-//	MessageDialog::MessageDialog(parent);
-//	this->setText(str);
-//}
 void MessageDialog::setText(const QString &str){
 	messageButton->setText(str);
 }
 void MessageDialog::resize(int w, int h){
 	messageButton->resize(w,h);
 }
-
+void MessageDialog::setStyleSheet(const QString& stylesheet){
+	messageButton->setStyleSheet(stylesheet);
+}
 //////////////////////////////////////////////////////////////////////////////
 DecisionDialog::DecisionDialog(QWidget* parent)
 	:QDialog(parent)
@@ -47,4 +44,5 @@ DecisionDialog::DecisionDialog(QWidget* parent)
 void DecisionDialog::setText(const QString &str){
 	messageLabel->setText(str);
 	messageLabel->setAlignment(Qt::AlignHCenter);
+	this->setFixedSize(this->sizeHint().width(),this->sizeHint().height());
 }

@@ -19,17 +19,27 @@ ItemListWidget::ItemListWidget(Player **_player, QWidget *parent)
 
 	QLabel *p1=new QLabel("2P",this);
 	p1->setGeometry(QRect(410,20,20,12));
-	
+
+	QSignalMapper *me[2][3];
+
 	for(int i=0; i<2; i++) {
 		for(int j=0; j<3; j++) {
 			int x=player[i]->getItemE(j);
-			ei[i][j]=new QLabel(this);
+			ei[i][j]=new QPushButton(this);
 			ei[i][j]->setGeometry(QRect(130+400*i+90*j,10,50,50));
+			ei[i][j]->setIconSize(QSize(50,50));
+			ei[i][j]->setFlat(1);
 			if(x>-1)
-				ei[i][j]->setPixmap(QPixmap(QString::fromStdString(shop[i]->ip(x)->getImage())));
-			ei[i][j]->setFrameShape(QFrame::Box);
-			ei[i][j]->setMargin(5);
-			ei[i][j]->setScaledContents(true);
+				ei[i][j]->setIcon(QPixmap(QString::fromStdString(shop[i]->ip(j)->getImage())));
+			else
+				ei[i][j]->setEnabled(0);
+			me[i][j]=new QSignalMapper(this);
+			me[i][j]->setMapping(ei[i][j], j);
+			QObject::connect(ei[i][j],SIGNAL(clicked()), me[i][j], SLOT(map()));
+			if(i==0)
+				QObject::connect(me[i][j], SIGNAL(mapped(int)), this, SLOT(remove0(int)));	
+			else
+				QObject::connect(me[i][j], SIGNAL(mapped(int)), this, SLOT(remove1(int)));	
 		}
 	}
 
@@ -76,33 +86,41 @@ ItemListWidget::ItemListWidget(Player **_player, QWidget *parent)
 	back = new QPushButton("Back",this);
 	back->setGeometry(QRect(20,480,100,50));
 	QObject::connect(back, SIGNAL(clicked()), this, SLOT(back()));	
-	
+
 	QPushButton *next;
 	next = new QPushButton("Next",this);
 	next->setGeometry(QRect(680,480,100,50));
 	QObject::connect(back, SIGNAL(clicked()), this, SLOT(next()));	
 }
 void ItemListWidget::equip0(int iid) {
-	DecisionDialog *decision=new DecisionDialog(this);
-	decision->setText("Are you sure?");
-	if(decision->exec()==QDialog::Accepted) {
-		int slot=shop[0]->equipItem(iid);
-		ei[0][slot]->setPixmap(QPixmap(QString::fromStdString(shop[0]->ip(iid)->getImage())));
-		iq[0][iid]->setText(QString::number(player[0]->getItem()[iid]));
-		if(player[0]->getItem()[iid]==0)
-			ii[0][iid]->setEnabled(0);
-	}
+	int slot=shop[0]->equipItem(iid);
+	ei[0][slot]->setIcon(QPixmap(QString::fromStdString(shop[0]->ip(iid)->getImage())));
+	ei[0][slot]->setEnabled(1);	
+	iq[0][iid]->setText(QString::number(player[0]->getItem()[iid]));
+	if(player[0]->getItem()[iid]==0)
+		ii[0][iid]->setEnabled(0);
 }
 void ItemListWidget::equip1(int iid) {
-	DecisionDialog *decision=new DecisionDialog(this);
-	decision->setText("Are you sure?");
-	if(decision->exec()==QDialog::Accepted) {
-		int slot=shop[1]->equipItem(iid);
-		ei[1][slot]->setPixmap(QPixmap(QString::fromStdString(shop[1]->ip(iid)->getImage())));
-		iq[1][iid]->setText(QString::number(player[1]->getItem()[iid]));
-		if(player[1]->getItem()[iid]==0)
-			ii[1][iid]->setEnabled(0);
-	}
+	int slot=shop[1]->equipItem(iid);
+	ei[1][slot]->setIcon(QPixmap(QString::fromStdString(shop[1]->ip(iid)->getImage())));
+	ei[1][slot]->setEnabled(1);	
+	iq[1][iid]->setText(QString::number(player[1]->getItem()[iid]));
+	if(player[1]->getItem()[iid]==0)
+		ii[1][iid]->setEnabled(0);
+}
+void ItemListWidget::remove0(int slot) {
+	int iid=shop[0]->removeItem(slot);
+	ei[0][slot]->setIcon(QIcon());
+	ei[0][slot]->setEnabled(0);
+	iq[0][iid]->setText(QString::number(player[0]->getItem()[iid]));
+	ii[0][iid]->setEnabled(1);
+}
+void ItemListWidget::remove1(int slot) {
+	int iid=shop[1]->removeItem(slot);
+	ei[1][slot]->setIcon(QIcon());
+	ei[1][slot]->setEnabled(0);
+	iq[1][iid]->setText(QString::number(player[1]->getItem()[iid]));
+	ii[1][iid]->setEnabled(1);
 }
 void ItemListWidget::back() {
 	MainWindow* mainwindow;

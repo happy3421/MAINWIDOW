@@ -146,9 +146,17 @@ void BuyDialog::buy() {
 	decision->setText("Are you sure?");
 	if(decision->exec()==QDialog::Accepted) {
 		int n=isb->value();
-		sw->getShop(pid)->buyItem(iid,isb->value());
-		sw->getGold(pid)->setText(QString::number(sw->getPlayer(pid)->getMoney()));
-		sw->getQuantity(pid,iid)->setText(QString::number(sw->getPlayer(pid)->getItem()[iid]));
+		bool x=sw->getShop(pid)->buyItem(iid,isb->value());
+		if(x) {
+			sw->getGold(pid)->setText(QString::number(sw->getPlayer(pid)->getMoney()));
+			sw->getQuantity(pid,iid)->setText(QString::number(sw->getPlayer(pid)->getItem()[iid]));
+		}
+		else {
+			QMessageBox* error=new QMessageBox(this);
+			error->setIcon(QMessageBox::Critical);
+			error->setText("Not Enough Money");
+			error->exec();
+		}
 		this->close();
 	}
 }

@@ -7,7 +7,6 @@
 #include "player.h"
 #include "item/shop.h"
 #include "global.h"
-#include "dialog.h"
 
 class ItemListWidget : public QWidget{
 	Q_OBJECT
@@ -16,10 +15,12 @@ public:
 private slots:
 	void equip0(int iid);
 	void equip1(int iid);
+	void remove0(int iid);
+	void remove1(int iid);
 	void next();
 	void back();
 private:
-	QLabel* ei[2][3];
+	QPushButton *ei[2][3];
 	QPushButton *ii[2][9];
 	QLabel *iq[2][9];
 	QWidget* newWidget;

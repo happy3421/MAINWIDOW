@@ -8,6 +8,7 @@ Item2::Item2() {
 	ID=2;
 	price=1000;
 	time=0;
+	image="Resources/item2.jpg";
 }
 
 bool Item2::itemGame(Board* board, int _time) {

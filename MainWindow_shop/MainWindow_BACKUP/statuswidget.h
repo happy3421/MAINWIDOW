@@ -2,6 +2,9 @@
 #include <QtWidgets/qwidget.h>
 #include <QtWidgets/qlabel.h>
 #include <QtWidgets/qpushbutton.h>
+#include <QtWidgets/qscrollarea.h>
+#include <QtWidgets/qlayout.h>
+#include <QtWidgets/qscrollbar.h>
 #include "Replay/replay.h"
 #include "global.h"
 
@@ -15,12 +18,20 @@ public:
 private slots:
 	void goToSelect();
 	void replay();
+	void next();
+	void before();
 private:
 	Record *record;	//delete 가능하게 멤버로 선언.
+	int page;
+	string WIN;
+	string LOSE;
 	string TEAMAWIN;
 	string TEAMBWIN;
 	string PAST;
 	QLabel* AWIN;
 	QLabel* BWIN;
 	QLabel* past;
+	QLabel* ARESULT[10];
+	QLabel* BRESULT[10];
+	void changeRecord(int);
 };

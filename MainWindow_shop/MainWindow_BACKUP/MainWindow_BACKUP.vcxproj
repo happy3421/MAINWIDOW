@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dialog.cpp" />
+    <ClCompile Include="gamwidget.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_dialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -108,6 +109,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="gamewidget.h" />
     <ClInclude Include="global.h" />
     <CustomBuild Include="itemlistwidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
@@ -213,16 +215,83 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\111.png" />
+    <None Include="Resources\112.png" />
+    <None Include="Resources\113.png" />
+    <None Include="Resources\114.png" />
+    <None Include="Resources\115.png" />
+    <None Include="Resources\121.png" />
+    <None Include="Resources\122.png" />
+    <None Include="Resources\123.png" />
+    <None Include="Resources\124.png" />
+    <None Include="Resources\125.png" />
+    <None Include="Resources\212.png" />
+    <None Include="Resources\213.png" />
+    <None Include="Resources\214.png" />
+    <None Include="Resources\215.png" />
+    <None Include="Resources\222.png" />
+    <None Include="Resources\223.png" />
+    <None Include="Resources\224.png" />
+    <None Include="Resources\225.png" />
+    <None Include="Resources\312.png" />
+    <None Include="Resources\313.png" />
+    <None Include="Resources\315.png" />
+    <None Include="Resources\322.png" />
+    <None Include="Resources\323.png" />
+    <None Include="Resources\325.png" />
+    <None Include="Resources\412.png" />
+    <None Include="Resources\413.png" />
+    <None Include="Resources\415.png" />
+    <None Include="Resources\422.png" />
+    <None Include="Resources\423.png" />
+    <None Include="Resources\425.png" />
+    <None Include="Resources\background1.jpg" />
+    <None Include="Resources\background2.jpg" />
+    <None Include="Resources\board.jpg" />
+    <None Include="Resources\character111.jpg" />
+    <None Include="Resources\character112.jpg" />
+    <None Include="Resources\character113.jpg" />
     <None Include="Resources\exit.jpg" />
     <None Include="Resources\exit_2.jpg" />
+    <None Include="Resources\game.jpg" />
+    <None Include="Resources\item1.jpg" />
+    <None Include="Resources\item2.jpg" />
+    <None Include="Resources\item3.jpg" />
+    <None Include="Resources\item4.jpg" />
+    <None Include="Resources\item5.jpg" />
+    <None Include="Resources\item6.jpg" />
     <None Include="Resources\login.jpg" />
+    <None Include="Resources\loginA1.jpg" />
+    <None Include="Resources\loginA2.jpg" />
     <None Include="Resources\loginA_3.jpg" />
     <None Include="Resources\loginA_4.jpg" />
+    <None Include="Resources\loginA_5.jpg" />
+    <None Include="Resources\loginA_6.jpg" />
+    <None Include="Resources\loginB1.jpg" />
+    <None Include="Resources\loginB2.jpg" />
+    <None Include="Resources\loginbackground.jpg" />
     <None Include="Resources\loginB_3.jpg" />
     <None Include="Resources\loginB_4.jpg" />
+    <None Include="Resources\logins.jpg" />
     <None Include="Resources\Logo.jpg" />
+    <None Include="Resources\lose.png" />
+    <None Include="Resources\select.jpg" />
+    <None Include="Resources\shop1.jpg" />
+    <None Include="Resources\shop2.jpg" />
+    <None Include="Resources\shopbutton.jpg" />
+    <None Include="Resources\shopbutton2.jpg" />
     <None Include="Resources\signup.jpg" />
+    <None Include="Resources\signup1.jpg" />
+    <None Include="Resources\signup2.jpg" />
     <None Include="Resources\signup_2.jpg" />
+    <None Include="Resources\start1.jpg" />
+    <None Include="Resources\start2.jpg" />
+    <None Include="Resources\startbutton.jpg" />
+    <None Include="Resources\startbutton2.jpg" />
+    <None Include="Resources\status1.jpg" />
+    <None Include="Resources\status2.jpg" />
+    <None Include="Resources\statusbutton.jpg" />
+    <None Include="Resources\statusbutton2.jpg" />
     <None Include="Resources\test.jpg" />
     <None Include="Resources\test2.jpg" />
     <None Include="Resources\test3.jpg" />
@@ -230,6 +299,13 @@
     <None Include="Resources\tutorial1.jpg" />
     <None Include="Resources\tutorial2.jpg" />
     <None Include="Resources\tutorial3.jpg" />
+    <None Include="Resources\tutorialbutton.jpg" />
+    <None Include="Resources\tutorialbutton1.jpg" />
+    <None Include="Resources\tutorialbutton2.jpg" />
+    <None Include="Resources\white.JPG" />
+    <None Include="Resources\win.png" />
+    <None Include="Resources\말1.jpg" />
+    <None Include="Resources\말2.jpg" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{62CD37D8-0C36-4AE1-AF29-CFF5F23DC223}</ProjectGuid>

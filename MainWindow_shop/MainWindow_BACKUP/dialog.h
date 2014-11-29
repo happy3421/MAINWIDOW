@@ -8,10 +8,9 @@ class MessageDialog : public QDialog
 	Q_OBJECT
 public:
 	MessageDialog(QWidget* parent=0);
-//	MessageDialog(const QString&, QWidget* parent=0);	이거안되네..쓰지말아야지
 	void setText(const QString&);
 	void resize(int,int);
-	//void setGeometry 혹시 창 위치도 바꾸고싶을 때 기능추가하면 됨.
+	void setStyleSheet(const QString&);	//QPushButton
 private:
 	QPushButton *messageButton;
 };

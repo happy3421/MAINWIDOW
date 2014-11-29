@@ -21,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
 	player[0]= new Player;
 	player[1]= new Player;
 
-	QObject::connect(this, SIGNAL(widgetChangedSignal()),this,SLOT(widgetChange()));
 }
 void MainWindow::show(){
 	QMainWindow::show();
@@ -38,14 +37,14 @@ MainWindow::~MainWindow()
 }
 void MainWindow::setWidget(WIDGETTYPE _widgettype){
 	widgettype=_widgettype;
-	emit widgetChangedSignal();
+	widgetChange();
 }
 
 void MainWindow::widgetChange(){
+		
 	if(widget)
 		delete widget;
-
-	switch(widgettype){
+	switch(widgettype){	
 	case EXIT:
 		this->close();
 		break;
@@ -56,6 +55,7 @@ void MainWindow::widgetChange(){
 	case LOGINWIDGET:
 		widget= new LoginWidget(this);
 		this->setCentralWidget(widget);
+		this->setWindowOpacity(1);		//Ãß°¡ÇÔ
 		break;
 	case SELECTWIDGET:
 		widget= new SelectWidget(this);

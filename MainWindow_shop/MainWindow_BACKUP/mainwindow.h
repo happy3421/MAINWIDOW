@@ -16,15 +16,16 @@ public:
 	void loginPlayer(Player**);
 	Player** getPlayer();
 private slots:
-	void widgetChange();
 signals:
-	void widgetChangedSignal();
 private:
 	const int width;
 	const int height;
 	WIDGETTYPE widgettype;
 	QWidget* widget;
 	Player** player;
+
+	void widgetChange();
+//	QPropertyAnimation *fadeeffect;
 };
 
 #endif // MAINWINDOW_H

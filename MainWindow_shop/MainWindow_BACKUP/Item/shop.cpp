@@ -6,26 +6,32 @@ Shop::Shop(Player* _player) {
 	player=_player;
 }
 
-void Shop::buyItem(const int id, const int num) {
+bool Shop::buyItem(const int id, const int num) {
 	if(id<0 || id>ITEMTYPE_NUM)
-		return;
+		return 0;
 	int price=ip(id)->getPrice();
 	int money=player->getMoney()-price*num;
 	if(money>=0) {
 		player->setMoney(money);
 		player->getItem()[id]+=num;
+		return 1;
 	}
+	else
+		return 0;
 }
 
-void Shop::sellItem(const int id, const int num) {
+bool Shop::sellItem(const int id, const int num) {
 	if(id<0 || id>ITEMTYPE_NUM)
-		return;
+		return 0;
 	int price=ip(id)->getPrice();
 	int money=player->getMoney()+price*num;
 	if(money>=0) {
 		player->setMoney(money);
 		player->getItem()[id]-=num;
+		return 1;
 	}
+	else
+		return 0;
 }
 
 int Shop::equipItem(const int id) {
@@ -39,5 +45,16 @@ int Shop::equipItem(const int id) {
 			player->getItem()[id]--;
 			return i;
 		}
+	}
+}
+
+int Shop::removeItem(const int slot) {
+	int id=player->getItemE(slot);
+	if(id==-1)
+		return -1;
+	else {
+		player->setItemE(slot,-1);
+		player->getItem()[id]++;
+		return id;
 	}
 }

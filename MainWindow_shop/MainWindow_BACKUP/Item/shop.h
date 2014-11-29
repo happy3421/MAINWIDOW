@@ -12,9 +12,10 @@ private:
 	Player *player;
 public:
 	Shop(Player*);
-	void buyItem(const int, const int);
-	void sellItem(const int, const int);
+	bool buyItem(const int, const int);
+	bool sellItem(const int, const int);
 	int equipItem(const int);
+	int removeItem(const int slot);
 };
 
 #endif

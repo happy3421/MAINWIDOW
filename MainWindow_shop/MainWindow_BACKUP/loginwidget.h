@@ -30,8 +30,8 @@ private:
 	QPushButton *AButton;
 	QPushButton *BButton;
 	QDialog *newwidget;
-	QLineEdit *ALine;
-	QLineEdit *BLine;
+	//QLineEdit *ALine;
+	//QLineEdit *BLine;
 	bool success[2];
 };
 

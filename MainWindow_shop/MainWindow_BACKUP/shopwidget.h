@@ -4,6 +4,7 @@
 #include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qspinbox.h>
 #include <QtWidgets/qscrollarea.h>
+#include <qmessagebox.h>
 #include <qsignalmapper.h>
 #include "player.h"
 #include "item/shop.h"
